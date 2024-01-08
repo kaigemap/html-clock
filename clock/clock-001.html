@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clock</title>
+  <style>
+    @font-face {
+      font-family: 'MyFont';
+      src: url(FugazOne-Regular.ttf);
+    }
+    body {
+      margin: 0;
+    }
+    #HtmlTodayYear, #HtmlTodayMonthDate, #HtmlClock, #HtmlClockSec {
+      margin: 0;
+      color: #AEADC2;
+      font-family: MyFont;
+    }
+    #HtmlTodayYear,#HtmlTodayMonthDate {
+      font-size: 32px;
+    }
+    #HtmlClock {
+      font-size: 40px;
+      margin-left: 4px;
+    }
+    #HtmlClockSec {
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+  <span id="HtmlTodayYear">YYYY.</span>
+  <span id="HtmlTodayMonthDate">MM.DD</span>
+  <span id="HtmlClock">HH:MM</span>
+  <span id="HtmlClockSec">:SS</span>
+
+  <script>
+    // https://www.nishishi.com/javascript-tips/realtime-clock-setinterval.html
+    function set2fig(num) {
+      // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+      var ret;
+      if( num < 10 ) { ret = "0" + num; }
+      else { ret = num; }
+      return ret;
+    }
+    function showClock2() {
+      var nowTime = new Date();
+      var nowYear = set2fig( nowTime.getFullYear() );
+      var nowMonth =  nowTime.getMonth()+1 ;
+      var nowDate = nowTime.getDate() ;
+      var nowHour = set2fig( nowTime.getHours() );
+      var nowMin  = set2fig( nowTime.getMinutes() );
+      var nowSec  = set2fig( nowTime.getSeconds() );
+      var msgYear = nowYear + ".";
+      var msgMonthDate = nowMonth + "." + nowDate;
+      var msgClock = nowHour + ":" + nowMin ;
+      var msgClockSec = ":" + nowSec;
+      document.getElementById("HtmlTodayYear").innerHTML = nowYear;
+      document.getElementById("HtmlTodayMonthDate").innerHTML = msgMonthDate;
+      document.getElementById("HtmlClock").innerHTML = msgClock;
+      document.getElementById("HtmlClockSec").innerHTML = msgClockSec;
+    }
+    setInterval('showClock2()',1000);
+  </script>
+</body>
+</html>
