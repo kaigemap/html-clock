@@ -37,9 +37,7 @@
   <span id="HtmlClockSec">:SS</span>
 
   <script>
-    // https://www.nishishi.com/javascript-tips/realtime-clock-setinterval.html
     function set2fig(num) {
-      // 桁数が1桁だったら先頭に0を加えて2桁に調整する
       var ret;
       if( num < 10 ) { ret = "0" + num; }
       else { ret = num; }
